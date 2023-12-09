@@ -1,7 +1,11 @@
 version: '3.4'
 
 services:
-  quota-userdb:
+
+  quota.pgadmin:
+    image: dpage/pgadmin4
+
+  quota.userdb:
     image: postgres
 
   user.api:
@@ -12,3 +16,4 @@ services:
 
 volumes:
   postgres_data:
+  pgadmin_data:

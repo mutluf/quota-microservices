@@ -10,7 +10,7 @@ namespace User.API
         {
             // Add framework services.
             services.AddDbContext<QuotaUserDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(configuration.GetValue<string>("DatabaseSettings:ConnectionString")));
 
             //services.AddIdentity<Entities.User, Entities.Role<int>>()
             //                .AddEntityFrameworkStores<QuotaUserDbContext, int>()
