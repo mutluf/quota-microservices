@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using User.API.Context;
+using User.API.Token;
 
 namespace User.API
 {
@@ -12,11 +16,26 @@ namespace User.API
             services.AddDbContext<QuotaUserDbContext>(options =>
                 options.UseNpgsql(configuration.GetValue<string>("DatabaseSettings:ConnectionString")));
 
-            //services.AddIdentity<Entities.User, Entities.Role<int>>()
-            //                .AddEntityFrameworkStores<QuotaUserDbContext, int>()
-            //                .AddDefaultTokenProviders();
-
             services.AddIdentity<Entities.User, Entities.Role>().AddEntityFrameworkStores<QuotaUserDbContext>().AddDefaultTokenProviders();
+
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer("Admin", options =>
+                {
+                    options.TokenValidationParameters = new()
+                    {
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidateLifetime = true,
+
+                        ValidAudience = configuration["Token:Audience"],
+                        ValidIssuer = configuration["Token:Issuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Token:SecurityKey"]))
+                    };
+                });
+
+            services.AddScoped<ITokenHandler, Token.TokenHandler>();
 
             return services;
         }
