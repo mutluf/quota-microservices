@@ -1,8 +1,10 @@
-﻿namespace User.API.Services
+﻿using User.API.Dtos;
+
+namespace User.API.Services
 {
     public interface IUserService
     {
-        Task RegisterUserAsync();
+        Task<bool> RegisterUserAsync(RegisterDto userData);
 
     }
 }
