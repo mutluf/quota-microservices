@@ -2,7 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
-namespace User.API.Token
+namespace User.API.SecurityToken
 {
     public class TokenHandler : ITokenHandler
     {

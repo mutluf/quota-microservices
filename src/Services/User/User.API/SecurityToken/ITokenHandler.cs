@@ -1,4 +1,4 @@
-﻿namespace User.API.Token
+﻿namespace User.API.SecurityToken
 {
     public interface ITokenHandler
     {
