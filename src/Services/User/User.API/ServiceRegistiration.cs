@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using User.API.Context;
+using User.API.SecurityToken;
 using User.API.Services;
-using User.API.Token;
 
 namespace User.API
 {
@@ -36,7 +36,7 @@ namespace User.API
                     };
                 });
 
-            services.AddScoped<ITokenHandler, Token.TokenHandler>();
+            services.AddScoped<ITokenHandler, SecurityToken.TokenHandler>();
 
             services.AddAutoMapper(typeof(Program));
 
