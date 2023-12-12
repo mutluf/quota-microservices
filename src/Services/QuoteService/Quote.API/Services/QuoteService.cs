@@ -1,8 +1,18 @@
-﻿namespace Quote.API.Services
+﻿using Quote.API.Dtos;
+using Quote.API.Repositories;
+
+namespace Quote.API.Services
 {
     public class QuoteService : IQuoteService
     {
-        public Task<bool> CreateAsync(Entities.Quote quote)
+        private readonly IQuoteRepository _quoteRepository;
+
+        public QuoteService(IQuoteRepository quoteRepository)
+        {
+            _quoteRepository = quoteRepository;
+        }
+
+        public Task<bool> CreateAsync(QuoteDto quote)
         {
             throw new NotImplementedException();
         }
@@ -12,17 +22,17 @@
             throw new NotImplementedException();
         }
 
-        public List<Entities.Quote> GetAll()
+        public List<QuoteDto> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Entities.Quote> GetByIdAsync(int id)
+        public Task<QuoteDto> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Entities.Quote quote)
+        public bool Update(QuoteDto quote)
         {
             throw new NotImplementedException();
         }
