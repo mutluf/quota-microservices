@@ -4,12 +4,12 @@ namespace Quote.API.Repositories
 {
     public interface IQuoteRepository
     {
-        Task<List<QuoteDto>> GetAll();
-        Task<QuoteDto> GetById(int id);
+        List<Entities.Quote> GetAll();
+        Task<Entities.Quote> GetByIdAsync(int id);
 
         void DeleteQuote(int id);
-        Task<bool> CreateQuote(QuoteDto quote);
-        Task<QuoteDto> UpdateQuote(QuoteDto quote);
+        Task<bool> CreateQuoteAsync(Entities.Quote quote);
+        bool UpdateQuote(Entities.Quote quote);
 
         Task SaveAsync();
     }

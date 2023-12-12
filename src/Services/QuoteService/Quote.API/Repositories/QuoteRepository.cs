@@ -4,7 +4,7 @@ using Quote.API.Context;
 
 namespace Quote.API.Repositories
 {
-    public class QuoteRepository
+    public class QuoteRepository:IQuoteRepository
     {
         private readonly QuotaQuoteDbContext _context;
 
@@ -30,13 +30,18 @@ namespace Quote.API.Repositories
             return _context.Quotes.AsQueryable().ToList();           
         }
 
-        public async Task<Entities.Quote> GetById(int id)
+        public async Task<Entities.Quote> GetByIdAsync(int id)
         {
             Entities.Quote quote = await _context.Quotes.SingleOrDefaultAsync();
             return quote;
         }
 
-        public async Task<bool> UpdateQuote(Entities.Quote quote)
+        public async Task SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        public bool UpdateQuote(Entities.Quote quote)
         {
             EntityEntry entry =  _context.Quotes.Update(quote);
 
