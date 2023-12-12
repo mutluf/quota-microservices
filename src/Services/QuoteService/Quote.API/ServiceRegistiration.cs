@@ -7,7 +7,7 @@ namespace Quote.API
     {
         public static IServiceCollection QuoteServiceRegistiration(this IServiceCollection services, IConfiguration config)
         {
-            services.AddDbContext<QuotaQuoteDb>(options =>
+            services.AddDbContext<QuotaQuoteDbContext>(options =>
             {
                 options.UseNpgsql(config["DatabaseSettings:ConnectionString"]);
             });

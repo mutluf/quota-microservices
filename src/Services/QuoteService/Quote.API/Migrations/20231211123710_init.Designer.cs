@@ -11,7 +11,7 @@ using Quote.API.Context;
 
 namespace Quote.API.Migrations
 {
-    [DbContext(typeof(QuotaQuoteDb))]
+    [DbContext(typeof(QuotaQuoteDbContext))]
     [Migration("20231211123710_init")]
     partial class init
     {

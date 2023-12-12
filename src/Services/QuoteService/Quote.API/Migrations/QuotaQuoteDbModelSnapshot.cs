@@ -10,7 +10,7 @@ using Quote.API.Context;
 
 namespace Quote.API.Migrations
 {
-    [DbContext(typeof(QuotaQuoteDb))]
+    [DbContext(typeof(QuotaQuoteDbContext))]
     partial class QuotaQuoteDbModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

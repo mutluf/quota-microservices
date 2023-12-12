@@ -2,9 +2,9 @@
 
 namespace Quote.API.Context
 {
-    public class QuotaQuoteDb : DbContext
+    public class QuotaQuoteDbContext : DbContext
     {
-        public QuotaQuoteDb(DbContextOptions options) : base(options)
+        public QuotaQuoteDbContext(DbContextOptions options) : base(options)
         {
         }
 
