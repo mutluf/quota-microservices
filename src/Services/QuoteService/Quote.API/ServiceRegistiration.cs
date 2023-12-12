@@ -14,6 +14,8 @@ namespace Quote.API
                 options.UseNpgsql(config["DatabaseSettings:ConnectionString"]);
             });
 
+            services.AddAutoMapper(typeof(Program));
+
             services.AddScoped<IQuoteRepository, QuoteRepository>();
             services.AddScoped<IQuoteService, QuoteService>();
 
