@@ -5,6 +5,9 @@ services:
   quota.pgadmin:
     image: dpage/pgadmin4
 
+  quota.aggregatordb:
+    image: postgres
+
   quota.userdb:
     image: postgres
 
@@ -20,4 +23,5 @@ services:
 volumes:
   postgres_user_data:
   postgres_quote_data:
+  postgres_aggregator_data:
   pgadmin_data:

@@ -13,6 +13,18 @@ services:
     volumes:
       - pgadmin_data:/root/.pgadmin
 
+  quota.aggregatordb:
+    container_name: quota.aggregatordb
+    environment: 
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DB=QuotaAggregatorDb
+    restart: always
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_aggregator_data:/var/lib/postgresql/data/
+
 
   quota.userdb:
     container_name: quota.userdb
