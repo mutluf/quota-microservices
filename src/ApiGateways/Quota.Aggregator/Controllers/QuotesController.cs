@@ -19,6 +19,7 @@ namespace Quota.Aggregator.Controllers
         public async Task<IActionResult> Get([FromRoute] int id)
         {
             QuoteDto quote = await _userQuoteService.GetQuoteAsync(id);
+            Console.Write(id);
 
             return Ok(quote);
         }

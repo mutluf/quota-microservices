@@ -32,7 +32,7 @@ namespace Quote.API.Repositories
 
         public async Task<Entities.Quote> GetByIdAsync(int id)
         {
-            Entities.Quote quote = await _context.Quotes.SingleOrDefaultAsync();
+            Entities.Quote quote = await _context.Quotes.FirstOrDefaultAsync(r=>r.Id==id);
             return quote;
         }
 
