@@ -22,5 +22,13 @@ namespace User.API.Controllers
             bool result = await _userService.RegisterUserAsync(userData);
             return Ok(result);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel passwordModel)
+        {
+
+            MessageModel message = await _userService.ChangePasswordAsync(passwordModel);
+            return Ok(message);
+        }
     }
 }

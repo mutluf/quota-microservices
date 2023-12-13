@@ -23,7 +23,7 @@ namespace User.API.Services
 
         public async Task<bool> RegisterUserAsync(RegisterDto userData)
         {
-            var user = _mapper.Map<Entities.User>(userData);    
+            var user = _mapper.Map<Entities.User>(userData);
             var result = await _userManager.CreateAsync(user, userData.Password);
 
             if (result.Succeeded)
@@ -41,14 +41,14 @@ namespace User.API.Services
         {
             Entities.User user = await _userManager.FindByNameAsync(loginData.UserNameOrEmail);
 
-            if(user == null)
+            if (user == null)
             {
                 user = await _userManager.FindByEmailAsync(loginData.UserNameOrEmail);
             }
 
             SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, loginData.Password, false);
 
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 Token token = _tokenHandler.CreateToken(60);
 
@@ -64,6 +64,31 @@ namespace User.API.Services
             {
                 Message = "Login failed."
             };
+        }
+
+        public async Task<MessageModel> ChangePasswordAsync(ChangePasswordModel changePassword)
+        {
+            Entities.User user = await _userManager.FindByNameAsync(changePassword.UsernameOrEmail);
+
+            if (user == null)
+            {
+                user = await _userManager.FindByEmailAsync(changePassword.UsernameOrEmail);
+            }
+
+            IdentityResult result = await _userManager.ChangePasswordAsync(user, changePassword.CurrentPassword, changePassword.NewPassword);
+
+            if (result.Succeeded)
+            {
+                return new()
+                {
+                    Message = "Password has been changed successfully."
+                };
+            }
+
+            return new()
+            {
+                Message = "Attempting to changing passwor has been failed."
+            };   
         }
     }
 }

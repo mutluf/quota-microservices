@@ -15,7 +15,6 @@ namespace Quote.API.Controllers
             _quoteService = quoteService;
         }
 
-        //get all quotes
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -23,7 +22,6 @@ namespace Quote.API.Controllers
             return Ok(datas);
         }
 
-        //get by id
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
@@ -31,7 +29,6 @@ namespace Quote.API.Controllers
             return Ok();
         }
 
-        //post
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] QuoteDto quote)
         {
@@ -39,7 +36,6 @@ namespace Quote.API.Controllers
             return Ok();
         }
 
-        //put
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] QuoteDto quote)
         {
@@ -47,7 +43,6 @@ namespace Quote.API.Controllers
             return Ok(result);
         }
 
-        //delete
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
