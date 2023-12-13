@@ -23,7 +23,7 @@ namespace User.API.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPost("[action]")]
         public async Task<IActionResult> ChangePassword(ChangePasswordModel passwordModel)
         {
 

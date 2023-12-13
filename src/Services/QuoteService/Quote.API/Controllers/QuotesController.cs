@@ -26,7 +26,7 @@ namespace Quote.API.Controllers
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var data = await _quoteService.GetByIdAsync(id);
-            return Ok();
+            return Ok(data);
         }
 
         [HttpPost]

@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quote.API", "Services\Quote
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{ADDDDF2D-0B26-4CA2-A05B-B91DAE203496}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quota.Aggregator", "ApiGateways\Quota.Aggregator\Quota.Aggregator.csproj", "{304DEAAA-FBE4-44CA-B62B-B98E740B862D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quota.Aggregator", "ApiGateways\Quota.Aggregator\Quota.Aggregator.csproj", "{304DEAAA-FBE4-44CA-B62B-B98E740B862D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Quote.API.Context;
@@ -11,9 +12,11 @@ using Quote.API.Context;
 namespace Quote.API.Migrations
 {
     [DbContext(typeof(QuotaQuoteDbContext))]
-    partial class QuotaQuoteDbModelSnapshot : ModelSnapshot
+    [Migration("20231213102755_quoteupdated")]
+    partial class quoteupdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
