@@ -15,13 +15,13 @@ namespace Quote.API.Services
             _mapper = mapper;
         }
 
-        public async Task<bool> CreateAsync(QuoteDto quoteDto)
+        public async Task<int> CreateAsync(QuoteDto quoteDto)
         {
             Entities.Quote quote = _mapper.Map<Entities.Quote>(quoteDto);
-            bool result = await _quoteRepository.CreateQuoteAsync(quote);
+            await _quoteRepository.CreateQuoteAsync(quote);
             await _quoteRepository.SaveAsync();
 
-            return result;
+            return quote.Id;
         }
 
         public async void Delete(int id)

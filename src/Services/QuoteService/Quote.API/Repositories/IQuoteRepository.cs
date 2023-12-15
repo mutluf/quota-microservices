@@ -8,7 +8,7 @@ namespace Quote.API.Repositories
         Task<Entities.Quote> GetByIdAsync(int id);
 
         void DeleteQuote(int id);
-        Task<bool> CreateQuoteAsync(Entities.Quote quote);
+        Task<int> CreateQuoteAsync(Entities.Quote quote);
         bool UpdateQuote(Entities.Quote quote);
 
         Task SaveAsync();

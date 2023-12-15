@@ -8,7 +8,7 @@ namespace Quote.API.Services
         Task<QuoteDto> GetByIdAsync(int id);
 
         void Delete(int id);
-        Task<bool> CreateAsync(QuoteDto quote);
+        Task<int> CreateAsync(QuoteDto quote);
         bool Update(QuoteDto quote);
 
     }

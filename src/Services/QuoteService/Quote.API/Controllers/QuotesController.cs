@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EventBus.Messages.Events;
+using MassTransit;
+using Microsoft.AspNetCore.Mvc;
 using Quote.API.Dtos;
 using Quote.API.Services;
 
@@ -9,10 +11,11 @@ namespace Quote.API.Controllers
     public class QuotesController : ControllerBase
     {
         private readonly IQuoteService _quoteService;
-
-        public QuotesController(IQuoteService quoteService)
+        private readonly IPublishEndpoint _publishEndpoint;
+        public QuotesController(IQuoteService quoteService, IPublishEndpoint publishEndpoint)
         {
             _quoteService = quoteService;
+            _publishEndpoint = publishEndpoint;
         }
 
         [HttpGet]
@@ -32,7 +35,18 @@ namespace Quote.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] QuoteDto quote)
         {
-            await _quoteService.CreateAsync(quote);
+             int id = await _quoteService.CreateAsync(quote);
+
+            //var userName = User?.Identity?.Name;
+            //int quoteId = quote.Id;
+            
+            QuoteCreatedEvent quoteEvent = new QuoteCreatedEvent()
+            {
+                QuoteId = id,
+                Username = User?.Identity?.Name!
+            };
+
+            _publishEndpoint.Publish(quoteEvent);
             return Ok();
         }
 

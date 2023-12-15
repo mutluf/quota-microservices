@@ -13,11 +13,11 @@ namespace Quote.API.Repositories
             _context = context;
         }
 
-        public async Task<bool> CreateQuoteAsync(Entities.Quote quote)
+        public async Task<int> CreateQuoteAsync(Entities.Quote quote)
         {
-            EntityEntry entry = await _context.Quotes.AddAsync(quote);
+            await _context.Quotes.AddAsync(quote);
 
-            return entry.State == EntityState.Added;
+            return quote.Id;
         }
 
         public void DeleteQuote(int id)
