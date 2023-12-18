@@ -35,7 +35,6 @@ namespace User.API
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Token:SecurityKey"]))
                     };
                 });
-
             services.AddScoped<ITokenHandler, SecurityToken.TokenHandler>();
 
             services.AddAutoMapper(typeof(Program));
